@@ -6,13 +6,11 @@ public class Hacker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-		ShowMainMenu("Logged in...");
+		ShowMainMenu();
 	}
 
-	void ShowMainMenu(string logIn) {
+	void ShowMainMenu() {
 		Terminal.ClearScreen();
-
-		Terminal.WriteLine(logIn);
 		Terminal.WriteLine("Hack locations: ");
 		Terminal.WriteLine("1.  Local");
 		Terminal.WriteLine("1.  Startup");
@@ -21,7 +19,13 @@ public class Hacker : MonoBehaviour {
 	}
 
 	void OnUserInput(string input){
-		print(input);
+		if (input == "menu" || input == "Menu") {
+			ShowMainMenu();
+		} else if (input == "007"){
+			Terminal.WriteLine("Select a level Mr. Bond.");
+		} else {
+			Terminal.WriteLine("Invalid choice.");
+		}
 	}
 	
 	// Update is called once per frame
