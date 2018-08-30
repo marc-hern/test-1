@@ -23,9 +23,15 @@ public class Hacker : MonoBehaviour {
 			ShowMainMenu();
 		} else if (input == "007"){
 			Terminal.WriteLine("Select a level Mr. Bond.");
-		} else {
+		} else if (input == "1"){
+			StartGame(1);
+		}else {
 			Terminal.WriteLine("Invalid choice.");
 		}
+	}
+
+	void StartGame(int inputLevel){
+		Terminal.WriteLine("You have chosen level " + inputLevel);
 	}
 	
 	// Update is called once per frame
