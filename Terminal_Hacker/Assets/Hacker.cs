@@ -61,6 +61,12 @@ public class Hacker : MonoBehaviour {
 	void StartGame(){
 		currentScreen = Screen.Password;
 		Terminal.ClearScreen();
+		SetRandomPassword();
+		Terminal.WriteLine("Enter level " + level + " password:");
+		Terminal.WriteLine("Hint: " + password.Anagram());
+	}
+
+	void SetRandomPassword(){
 		switch(level){
 			case 1:
 				password = lvl1Passwords[Random.Range(0, lvl1Passwords.Length)];
@@ -72,7 +78,6 @@ public class Hacker : MonoBehaviour {
 				password = lvl3Passwords[Random.Range(0, lvl3Passwords.Length)];
 				break;
 		}
-		Terminal.WriteLine("Enter level " + level + " password:");
 	}
 	
 	void CheckPassword(string input) {
