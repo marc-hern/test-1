@@ -17,6 +17,7 @@ public class Hacker : MonoBehaviour {
 	string[] lvl1Passwords = {"password", "home", "123"};
 	string[] lvl2Passwords = {"pw123", "startupPW", "123!@#"};
 	string[] lvl3Passwords = {"Goog1!", "remote1!", "1!2@3#"};
+	const string menuHint = "Press menu at any time...";
 	
 
 
@@ -54,6 +55,7 @@ public class Hacker : MonoBehaviour {
 			currentScreen = Screen.MainMenu;
 		} else {
 			Terminal.WriteLine("Invalid choice.");
+			Terminal.WriteLine(menuHint);
 			currentScreen = Screen.MainMenu;
 		}
 	}
@@ -62,8 +64,8 @@ public class Hacker : MonoBehaviour {
 		currentScreen = Screen.Password;
 		Terminal.ClearScreen();
 		SetRandomPassword();
-		Terminal.WriteLine("Enter level " + level + " password:");
-		Terminal.WriteLine("Hint: " + password.Anagram());
+		Terminal.WriteLine("Enter level " + level + " password(" + password.Anagram() + "):");
+		Terminal.WriteLine(menuHint);
 	}
 
 	void SetRandomPassword(){
@@ -95,6 +97,8 @@ public class Hacker : MonoBehaviour {
 		Terminal.WriteLine("I'm in...");
 
 		ShowLevelReward();
+		Terminal.WriteLine(menuHint);
+		
 	}
 
 	void ShowLevelReward(){
