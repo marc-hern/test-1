@@ -57,14 +57,8 @@ public class Hacker : MonoBehaviour {
 	}
 
 	void RunMainMenu(string input){
-		if (input == "1") {
-			level = 1;
-			StartGame();
-		} else if (input == "2") {
-			level = 2;
-			StartGame();
-		} else if (input == "3") {
-			level = 3;
+		if (input =="1" || input == "2"){
+			level = int.Parse(input);
 			StartGame();
 		} else if (input == "007") {
 			Terminal.WriteLine("Select a level Mr. Bond.");
@@ -77,6 +71,7 @@ public class Hacker : MonoBehaviour {
 
 	void StartGame(){
 		currentScreen = Screen.Password;
+		Terminal.ClearScreen();
 		Terminal.WriteLine("Enter level " + level + " password:");
 	}
 	
