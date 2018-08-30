@@ -14,21 +14,27 @@ public class Hacker : MonoBehaviour {
 	Screen currentScreen;
 
 	// Passwords
-	List<string> lvl1Passwords = new List<string>() {
-		"password",
-		"home",
-		"123"
-	};
-	List<string> lvl2Passwords = new List<string>() {
-		"pw123",
-		"startupPW",
-		"123!@#"
-	};
-	List<string> lvl3Passwords = new List<string>() {
-		"Goog1!",
-		"remote1!",
-		"1!2@3#"
-	};
+	// Array version
+	string password;
+	string[] lvl1Passwords = {"password", "home", "123"};
+	string[] lvl2Passwords = {"pw123", "startupPW", "123!@#"};
+	string[] lvl3Passwords = {"Goog1!", "remote1!", "1!2@3#"};
+	// List version
+	// List<string> lvl1Passwords = new List<string>() {
+	// 	"password",
+	// 	"home",
+	// 	"123"
+	// };
+	// List<string> lvl2Passwords = new List<string>() {
+	// 	"pw123",
+	// 	"startupPW",
+	// 	"123!@#"
+	// };
+	// List<string> lvl3Passwords = new List<string>() {
+	// 	"Goog1!",
+	// 	"remote1!",
+	// 	"1!2@3#"
+	// };
 
 
 	// Use this for initialization
@@ -72,32 +78,48 @@ public class Hacker : MonoBehaviour {
 	void StartGame(){
 		currentScreen = Screen.Password;
 		Terminal.ClearScreen();
+		switch(level){
+			case 1:
+				password = lvl1Passwords[Random.Range(1, 3)];
+				break;
+			case 2:
+				password = lvl2Passwords[Random.Range(1, 3)];
+				break;
+			case 3:
+				password = lvl3Passwords[Random.Range(1, 3)];
+				break;
+		}
 		Terminal.WriteLine("Enter level " + level + " password:");
 	}
 	
 	void CheckPassword(string input) {
-		if (level == 1){
-			if (lvl1Passwords.Contains(input)) {
-				Terminal.WriteLine("I'm in...");
-			}
-			else {
-				Terminal.WriteLine("Try again...");
-			}
-		} else if (level == 2){
-			if (lvl2Passwords.Contains(input)) {
-				Terminal.WriteLine("I'm in...");
-			}
-			else {
-				Terminal.WriteLine("Try again...");
-			}
-		} else if (level == 3){
-			if (lvl3Passwords.Contains(input)) {
-				Terminal.WriteLine("I'm in...");
-			}
-			else {
-				Terminal.WriteLine("Try again...");
-			}
+		if (input == password){
+			Terminal.WriteLine("I'm in...");
+		} else {
+			Terminal.WriteLine("Try again...");
 		}
+		// if (level == 1){
+		// 	if (lvl1Passwords.Contains(input)) {
+		// 		Terminal.WriteLine("I'm in...");
+		// 	}
+		// 	else {
+		// 		Terminal.WriteLine("Try again...");
+		// 	}
+		// } else if (level == 2){
+		// 	if (lvl2Passwords.Contains(input)) {
+		// 		Terminal.WriteLine("I'm in...");
+		// 	}
+		// 	else {
+		// 		Terminal.WriteLine("Try again...");
+		// 	}
+		// } else if (level == 3){
+		// 	if (lvl3Passwords.Contains(input)) {
+		// 		Terminal.WriteLine("I'm in...");
+		// 	}
+		// 	else {
+		// 		Terminal.WriteLine("Try again...");
+		// 	}
+		// }
 	}
 	// Update is called once per frame
 	void Update() {
