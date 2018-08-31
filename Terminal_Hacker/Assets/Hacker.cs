@@ -18,6 +18,12 @@ public class Hacker : MonoBehaviour {
 	string[] lvl2Passwords = {"pw123", "startupPW", "123!@#"};
 	string[] lvl3Passwords = {"Goog1!", "remote1!", "1!2@3#"};
 	const string menuHint = "Press menu at any time...";
+
+	List<string> quitWords = new List<string>() {
+		"quit",
+		"close",
+		"exit"
+	};
 	
 
 
@@ -39,6 +45,9 @@ public class Hacker : MonoBehaviour {
 	void OnUserInput(string input) {
 		if (input.ToLower() == "menu") {
 			ShowMainMenu();
+		} else if (quitWords.Contains(input)) {
+			Terminal.WriteLine("Shutting down...");
+			Application.Quit();
 		} else if (currentScreen == Screen.MainMenu){
 			RunMainMenu(input);
 		} else if (currentScreen == Screen.Password){
