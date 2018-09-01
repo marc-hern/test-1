@@ -9,6 +9,8 @@ public class Rocket : MonoBehaviour {
 	AudioSource audioSource;
 	bool soundPlaying = false;
 	float startVolume = 0.101f;
+	[SerializeField]float rcsThrust = 150f;
+	[SerializeField]float mainThrust = 20f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,15 +20,14 @@ public class Rocket : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		ProcessInput();
+		Thrust();
+		Rotate();
 	}
 
-	private void ProcessInput() {
+	private void Thrust() {
 		if (Input.GetKey(KeyCode.Space)) {
-			rigidBody.AddRelativeForce(Vector3.up);
+			rigidBody.AddRelativeForce(Vector3.up * mainThrust);
 			if (!soundPlaying){
-				// audioSource.Play();
-				// audioSource.UnPause();
 				soundPlaying = true;
 				audioSource.Play();
                 audioSource.volume = startVolume;
@@ -39,10 +40,35 @@ public class Rocket : MonoBehaviour {
 			}
 			// audioSource.Stop();
 		}
+	}
+
+	private void Rotate() {
+
+		rigidBody.freezeRotation = true;
+		float rotationThisFrame = rcsThrust * Time.deltaTime;
+
 		if (Input.GetKey(KeyCode.A)) {
-			transform.Rotate(Vector3.forward);
+			transform.Rotate(Vector3.forward * rotationThisFrame);
 		} else if (Input.GetKey(KeyCode.D)) {
-			transform.Rotate(-Vector3.forward);
+			transform.Rotate(-Vector3.forward * rotationThisFrame);
+		}
+
+		rigidBody.freezeRotation = false;
+	}
+
+	void OnCollisionEnter(Collision collision){
+		switch(collision.gameObject.tag){
+			case "Friendly":
+				print("OK");
+				break;
+			
+			case "Fuel":
+				print("gas gas gas");
+				break;
+				
+			default:
+				print("you ded");
+				break;
 		}
 	}
 
