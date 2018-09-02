@@ -36,7 +36,7 @@ public class Rocket : MonoBehaviour {
 		} else {
 			if (soundPlaying){
 				soundPlaying = false;
-                StartCoroutine(VolumeFade(audioSource, 0f, 0.5f));
+                StartCoroutine(VolumeFade(audioSource, 0f, 0.05f));
 			}
 			// audioSource.Stop();
 		}
@@ -65,7 +65,7 @@ public class Rocket : MonoBehaviour {
 			case "Fuel":
 				print("gas gas gas");
 				break;
-				
+
 			default:
 				print("you ded");
 				break;
