@@ -13,6 +13,9 @@ public class Rocket : MonoBehaviour {
 	[SerializeField]float rcsThrust = 150f;
 	[SerializeField]float mainThrust = 20f;
 
+	enum State {Alive, Dying, Transcending};
+	State state = State.Alive;
+
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody>();
@@ -21,8 +24,10 @@ public class Rocket : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Thrust();
-		Rotate();
+		if (state == State.Alive){
+			Thrust();
+			Rotate();
+		}
 	}
 
 	private void Thrust() {
@@ -58,20 +63,30 @@ public class Rocket : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
+		if (state != State.Alive) { return; }
 		switch(collision.gameObject.tag){
 			case "Friendly":
 				break;
 			
 			case "Finish":
-				print("gas gas gas");
-				SceneManager.LoadScene(1);
+				state = State.Transcending;
+				Invoke("LoadNextScene", 1f);
 				break;
 
 			default:
-				print("you ded");
-				SceneManager.LoadScene(0);
+				state = State.Dying;
+				print("hi");
+				Invoke("LoadFirstScene", 1f);
 				break;
 		}
+	}
+
+	private void LoadNextScene(){
+		SceneManager.LoadScene(1);
+	}
+
+	private void LoadFirstScene(){
+		SceneManager.LoadScene(0);
 	}
 
 	IEnumerator VolumeFade(AudioSource _AudioSource, float _EndVolume, float _FadeLength)
