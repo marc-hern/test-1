@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class Rocket : MonoBehaviour {
@@ -59,15 +60,16 @@ public class Rocket : MonoBehaviour {
 	void OnCollisionEnter(Collision collision){
 		switch(collision.gameObject.tag){
 			case "Friendly":
-				print("OK");
 				break;
 			
-			case "Fuel":
+			case "Finish":
 				print("gas gas gas");
+				SceneManager.LoadScene(1);
 				break;
 
 			default:
 				print("you ded");
+				SceneManager.LoadScene(0);
 				break;
 		}
 	}
