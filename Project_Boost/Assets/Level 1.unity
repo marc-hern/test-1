@@ -518,11 +518,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4270696827701848, guid: 624f1d77b03491444af988e6135741ed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 18.4
+      value: 18.32
       objectReference: {fileID: 0}
     - target: {fileID: 4270696827701848, guid: 624f1d77b03491444af988e6135741ed, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8.27
+      value: 15.1
       objectReference: {fileID: 0}
     - target: {fileID: 4270696827701848, guid: 624f1d77b03491444af988e6135741ed, type: 2}
       propertyPath: m_LocalPosition.z
@@ -984,7 +984,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4270696827701848, guid: 624f1d77b03491444af988e6135741ed, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.77
+      value: 13.14
       objectReference: {fileID: 0}
     - target: {fileID: 4270696827701848, guid: 624f1d77b03491444af988e6135741ed, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1246,16 +1246,6 @@ Prefab:
     - target: {fileID: 4327298011101494, guid: 543edff5378a4f846b2be161623d8019, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114462885412951156, guid: 543edff5378a4f846b2be161623d8019,
-        type: 2}
-      propertyPath: rcsThrust
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 114462885412951156, guid: 543edff5378a4f846b2be161623d8019,
-        type: 2}
-      propertyPath: mainThrust
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 543edff5378a4f846b2be161623d8019, type: 2}
