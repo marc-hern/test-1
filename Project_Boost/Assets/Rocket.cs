@@ -15,6 +15,10 @@ public class Rocket : MonoBehaviour {
 	[SerializeField]AudioClip mainEngine;
 	[SerializeField]AudioClip deathSound;
 	[SerializeField]AudioClip levelCompleteSound;
+	
+	[SerializeField]ParticleSystem mainEngineParticles;
+	[SerializeField]ParticleSystem deathParticles;
+	[SerializeField]ParticleSystem successParticles;
 
 	enum State {Alive, Dying, Transcending};
 	State state = State.Alive;
