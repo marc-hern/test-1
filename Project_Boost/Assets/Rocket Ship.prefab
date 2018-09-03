@@ -184,13 +184,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241800541905210}
-  m_LocalRotation: {x: 0.75105983, y: -0, z: -0, w: 0.6602343}
-  m_LocalPosition: {x: 0, y: -2.09, z: -0.27}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4327298011101494}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 97.36401, y: -0.000015258789, z: -0.000015258789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4327298011101494
 Transform:
   m_ObjectHideFlags: 1
@@ -217,13 +217,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1591738988735706}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.150197, y: 3.1, z: -12.432644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4327298011101494}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4564480919373444
 Transform:
   m_ObjectHideFlags: 1
@@ -593,9 +593,9 @@ MonoBehaviour:
   mainEngine: {fileID: 8300000, guid: 5333f66ba2bc1664bb336e28f5c5352d, type: 3}
   deathSound: {fileID: 8300000, guid: 3484128c85c00924089333bf06740092, type: 3}
   levelCompleteSound: {fileID: 8300000, guid: 9229f7ffc15d77f4ca399d06a5a358da, type: 3}
-  mainEngineParticles: {fileID: 0}
-  deathParticles: {fileID: 0}
-  successParticles: {fileID: 0}
+  mainEngineParticles: {fileID: 198413959019141100}
+  deathParticles: {fileID: 198169798718916696}
+  successParticles: {fileID: 198279692141896316}
 --- !u!135 &135040068792084494
 SphereCollider:
   m_ObjectHideFlags: 1
