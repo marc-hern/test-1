@@ -22,8 +22,7 @@ public class Rocket : MonoBehaviour {
 	[SerializeField]ParticleSystem deathParticles;
 	[SerializeField]ParticleSystem successParticles;
 
-	enum State {Alive, Dying, Transcending};
-	State state = State.Alive;
+	bool isTransitioning = false;
 
 	bool collisionsAreDisabled = false;
 
@@ -35,7 +34,7 @@ public class Rocket : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (state == State.Alive){
+		if (!isTransitioning){
 			RespondToThrustInput();
 			RespondToRotateInput();
 		}
@@ -58,9 +57,13 @@ public class Rocket : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Space)){
 			ApplyThrust();
 		} else {
-			audioSource.Stop();
-			mainEngineParticles.Stop();
+			StopApplyingThrust();
 		}
+	}
+
+	private void StopApplyingThrust(){
+		audioSource.Stop();
+		mainEngineParticles.Stop();
 	}
 
 	private void ApplyThrust(){
@@ -92,8 +95,7 @@ public class Rocket : MonoBehaviour {
 	// }
 
 	private void RespondToRotateInput() {
-
-		rigidBody.freezeRotation = true;
+		rigidBody.angularVelocity = Vector3.zero;
 		float rotationThisFrame = rcsThrust * Time.deltaTime;
 
 		if (Input.GetKey(KeyCode.A)) {
@@ -106,7 +108,7 @@ public class Rocket : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		if (state != State.Alive || collisionsAreDisabled) { return; }
+		if (isTransitioning || collisionsAreDisabled) { return; }
 		
 		switch(collision.gameObject.tag){
 			case "Friendly":
@@ -126,7 +128,7 @@ public class Rocket : MonoBehaviour {
 		audioSource.Stop();
 		audioSource.PlayOneShot(levelCompleteSound);
 		successParticles.Play();
-		state = State.Transcending;
+		isTransitioning = true;
 		Invoke("LoadNextScene", levelLoadDelay);
 	}
 
@@ -134,7 +136,7 @@ public class Rocket : MonoBehaviour {
 		audioSource.Stop();
 		audioSource.PlayOneShot(deathSound);
 		deathParticles.Play();
-		state = State.Dying;
+		isTransitioning = true;
 		Invoke("LoadFirstScene", levelLoadDelay);
 	}
 
