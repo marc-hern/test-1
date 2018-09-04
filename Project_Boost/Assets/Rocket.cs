@@ -67,32 +67,12 @@ public class Rocket : MonoBehaviour {
 	}
 
 	private void ApplyThrust(){
-		// TODO (Marcus): Possible remove Time.deltaTime for movement issues
-		// rigidBody.AddRelativeForce(Vector3.up * mainThrust);
 		rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
 		if (!audioSource.isPlaying){
 			audioSource.PlayOneShot(mainEngine);
 		}
 		mainEngineParticles.Play();
 	}
-
-	// private void Thrust() {
-	// 	if (Input.GetKey(KeyCode.Space)) {
-	// 		rigidBody.AddRelativeForce(Vector3.up * mainThrust);
-	// 		if (!soundPlaying){
-	// 			soundPlaying = true;
-	// 			audioSource.PlayOneShot(mainEngine);
-    //             audioSource.volume = startVolume;
-    //             audioSource.UnPause();
-	// 		}
-	// 	} else {
-	// 		if (soundPlaying){
-	// 			soundPlaying = false;
-    //             StartCoroutine(VolumeFade(audioSource, 0f, 0.05f));
-	// 		}
-	// 		// audioSource.Stop();
-	// 	}
-	// }
 
 	private void RespondToRotateInput() {
 		rigidBody.angularVelocity = Vector3.zero;
