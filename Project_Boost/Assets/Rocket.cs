@@ -139,7 +139,16 @@ public class Rocket : MonoBehaviour {
 	}
 
 	private void LoadNextScene(){
-		SceneManager.LoadScene(1);
+		int totalScenes = SceneManager.sceneCountInBuildSettings;
+		int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+		if (currentSceneIndex == (totalScenes - 1)){
+			SceneManager.LoadScene(0);
+		}
+		else {
+			int nextSceneIndex = currentSceneIndex + 1;
+			SceneManager.LoadScene(nextSceneIndex);
+		}
 	}
 
 	private void LoadFirstScene(){
